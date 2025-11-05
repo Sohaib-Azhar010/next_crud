@@ -404,7 +404,11 @@ export default function TodoList({ initialTodos, user }: TodoListProps) {
                               d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                             />
                           </svg>
-                          <span>{new Date(todo.created_at).toLocaleDateString()}</span>
+                          <span>{new Date(todo.created_at).toLocaleDateString('en-US', { 
+                            year: 'numeric', 
+                            month: 'short', 
+                            day: 'numeric' 
+                          })}</span>
                         </div>
                       </div>
                       <div className="flex gap-2 flex-shrink-0">
