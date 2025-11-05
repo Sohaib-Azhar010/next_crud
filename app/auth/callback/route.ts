@@ -9,7 +9,13 @@ export async function GET(request: Request) {
 
   if (code) {
     const supabase = await createClient()
-    await supabase.auth.exchangeCodeForSession(code)
+    const { error } = await supabase.auth.exchangeCodeForSession(code)
+    
+    if (error) {
+      console.error('Error exchanging code for session:', error)
+      // Redirect to login on error
+      return NextResponse.redirect(`${origin}/login?error=${encodeURIComponent(error.message)}`)
+    }
   }
 
   // If it's a password recovery, redirect to reset password page
@@ -17,6 +23,6 @@ export async function GET(request: Request) {
     return NextResponse.redirect(`${origin}/reset-password`)
   }
 
-  // Otherwise, redirect to dashboard
+  // For OAuth (Google, etc.), redirect to dashboard
   return NextResponse.redirect(`${origin}/dashboard`)
 }
