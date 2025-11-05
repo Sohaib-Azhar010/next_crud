@@ -139,7 +139,7 @@ export default function TodoList({ initialTodos, user }: TodoListProps) {
   return (
     <div className="space-y-6">
       {/* Create Todo Form */}
-      <form onSubmit={handleCreate} className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-white/50">
+      <form onSubmit={handleCreate} className="bg-white rounded-2xl shadow-xl p-8">
         <div className="flex items-center gap-3 mb-6">
           <div className="h-10 w-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center">
             <svg
@@ -296,7 +296,7 @@ export default function TodoList({ initialTodos, user }: TodoListProps) {
           </h2>
         </div>
         {todos.length === 0 ? (
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-12 text-center border border-white/50">
+          <div className="bg-white rounded-2xl shadow-xl p-12 text-center">
             <div className="mx-auto h-16 w-16 bg-gray-100 rounded-full flex items-center justify-center mb-4">
               <svg
                 className="h-8 w-8 text-gray-400"
@@ -319,7 +319,7 @@ export default function TodoList({ initialTodos, user }: TodoListProps) {
           todos.map((todo) => (
             <div
               key={todo.id}
-              className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-6 border border-white/50 hover:shadow-xl transition-all duration-200 hover:scale-[1.01]"
+              className="bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-all duration-200 hover:scale-[1.01]"
             >
               {editingId === todo.id ? (
                 <div className="space-y-4">
